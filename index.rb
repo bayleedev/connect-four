@@ -8,15 +8,7 @@ class Board
   ROWS = 6
 
   def initialize
-    @pieces = [
-      [:black, :black, :orange, :orange, :black, :black],
-      [:black, nil, :white, :orange, nil, :black],
-      [:red, :white, nil, :orange, nil, nil],
-      [:white, nil, nil, :yellow, nil, nil],
-      [:red, nil, nil, nil, nil, nil],
-      [:black, nil, nil, nil, nil, :black],
-      [:black, :black, nil, nil, :black, :black]
-    ]
+    @pieces = ([nil] * COLS).map { [nil] * ROWS }
   end
 
   def draw
@@ -54,6 +46,11 @@ class Board
     end
   end
 
+  def place(col, val)
+    id = column(col).each_with_index.find { |el, i| el.nil? }[1]
+    column(col)[id] = val
+  end
+
   def row(id)
     pieces.collect { |el| el[id] }
   end
@@ -61,13 +58,16 @@ class Board
   def column(id)
     pieces[id]
   end
-
 end
 
 board = Board.new
-board.draw
-if board.won?
-  puts "Somebody won!"
-else
-  puts "Fail."
+
+while !board.won?
+  board.draw
+  print 'What would you like to do: '
+  input = gets.chomp
+  unless input.match /\A[^\d]/
+    board.place(input.to_i, :red)
+  end
 end
+board.draw
