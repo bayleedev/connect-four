@@ -47,8 +47,13 @@ class Board
   end
 
   def place(col, val)
-    id = column(col).each_with_index.find { |el, i| el.nil? }[1]
-    column(col)[id] = val
+    if col.match(/\A[^\d]/)
+      false
+    else
+      col = col.to_i
+      id = column(col).each_with_index.find { |el, i| el.nil? }[1]
+      column(col)[id] = val
+    end
   end
 
   def row(id)
@@ -61,13 +66,9 @@ class Board
 end
 
 board = Board.new
-
-while !board.won?
-  board.draw
+while board.draw and !board.won?
   print 'What would you like to do: '
-  input = gets.chomp
-  unless input.match /\A[^\d]/
-    board.place(input.to_i, :red)
+  unless board.place(gets.chomp, :red)
+    print 'Invalid input.'
   end
 end
-board.draw
