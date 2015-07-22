@@ -8,3 +8,6 @@ ruby index.rb
 ## Remote Play
 
 Use [tmate](https://github.com/nviennot/tmate).
+
+## Screenshot
+![Screenshot](screenshot.png)
