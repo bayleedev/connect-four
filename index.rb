@@ -14,7 +14,7 @@ class Board
   def draw
     ROWS.times do |i|
       row(ROWS - 1 - i).each do |char|
-        print "\u25A0 ".colorize(char || :light_black).bold
+        print "\u25A0 ".colorize(char || :light_black)
       end
       print "\n"
     end
@@ -85,6 +85,6 @@ board = Board.new
 while board.draw and !board.won?
   print "What would #{board.current_player} like to do: "
   unless board.place(gets.chomp)
-    print 'Invalid input.'
+    puts 'Invalid input.'
   end
 end
