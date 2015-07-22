@@ -1,13 +1,15 @@
 ## Connect 4
 
+### Running
+
 ~~~
 bundle install
 ruby index.rb
 ~~~
 
-## Remote Play
+### Remote Play
 
 Use [tmate](https://github.com/nviennot/tmate).
 
-## Screenshot
+### Screenshot
 ![Screenshot](screenshot.png)
