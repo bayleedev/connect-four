@@ -20,6 +20,10 @@ class Board
     end
   end
 
+  def moves
+    pieces.flatten.compact.length
+  end
+
   def won?
     ROWS.times.find do |r|
       COLS.times.find do |c|
@@ -46,13 +50,25 @@ class Board
     end
   end
 
-  def place(col, val)
+  def red?
+    moves % 2 == 0
+  end
+
+  def current_color
+    red? ? :red : :yellow
+  end
+
+  def current_player
+    current_color.to_s.colorize(current_color)
+  end
+
+  def place(col)
     if col.match(/\A[^\d]/)
       false
     else
       col = col.to_i
       id = column(col).each_with_index.find { |el, i| el.nil? }[1]
-      column(col)[id] = val
+      column(col)[id] = current_color
     end
   end
 
@@ -67,8 +83,8 @@ end
 
 board = Board.new
 while board.draw and !board.won?
-  print 'What would you like to do: '
-  unless board.place(gets.chomp, :red)
+  print "What would #{board.current_player} like to do: "
+  unless board.place(gets.chomp)
     print 'Invalid input.'
   end
 end
