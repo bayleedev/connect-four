@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/index.rb'
+
+board = Board.new
+while board.draw and !board.won?
+  print "What would #{board.current_player} like to do: "
+  unless board.place(gets.chomp)
+    puts 'Invalid input.'
+  end
+end

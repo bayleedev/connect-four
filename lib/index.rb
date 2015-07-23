@@ -1,4 +1,3 @@
-require 'pry'
 require 'colorize'
 
 class Board
@@ -78,13 +77,5 @@ class Board
 
   def column(id)
     pieces[id]
-  end
-end
-
-board = Board.new
-while board.draw and !board.won?
-  print "What would #{board.current_player} like to do: "
-  unless board.place(gets.chomp)
-    puts 'Invalid input.'
   end
 end
