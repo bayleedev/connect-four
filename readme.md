@@ -11,7 +11,7 @@ Without rake
 
 ~~~
 bundle install
-ruby lib/index.rb
+./bin/connect-four
 ~~~
 
 ### Remote Play
