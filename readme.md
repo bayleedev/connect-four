@@ -4,7 +4,14 @@
 
 ~~~
 bundle install
-ruby index.rb
+rake
+~~~
+
+Without rake
+
+~~~
+bundle install
+ruby lib/index.rb
 ~~~
 
 ### Remote Play
