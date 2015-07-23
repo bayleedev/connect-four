@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/index.rb'
+require_relative '../lib/connect-four.rb'
 
 board = Board.new
 while board.draw and !board.won?
