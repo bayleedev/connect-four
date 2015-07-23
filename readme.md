@@ -1,6 +1,13 @@
 ## Connect 4
 
-### Running
+### Building
+
+~~~
+gem install connect-four
+connect-four
+~~~
+
+### Running from Source
 
 ~~~
 bundle install
