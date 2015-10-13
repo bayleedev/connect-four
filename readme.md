@@ -21,7 +21,7 @@ bundle install
 ./bin/connect-four
 ~~~
 
-### Remote Play
+### Playing with Friends
 
 Use [tmate](https://github.com/nviennot/tmate).
 
